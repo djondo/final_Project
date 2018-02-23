@@ -5,39 +5,42 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class UserInput {
-    Scanner s = new Scanner(System.in);
     //create animal objects
-    LinkedList<Animals> animals = new LinkedList<>();
 
+    public static Animals addAnimal() {
+        LinkedList<Animals> animals = new LinkedList<>();
 
-    public Animals addAnimal() {
+        Scanner s = new Scanner(System.in);
 
         while (true) {
             try {
                 System.out.println("Please enter the animal name:");
-                String name = s.nextLine();
+                String name = s.next();
                 System.out.println("Please enter its sound:");
-                String sound = s.nextLine();
+                String sound = s.next();
                 System.out.println("How many legs does " + name + " have?");
                 int nrLegs = s.nextInt();
+               /* if(nrLegs == 2){
+                    int legs = 2;*/
                 System.out.println("What does " + name + " usually eat?");
                 String eatingHabit = s.next();
                 Animals newAnimal = new Animals(name, nrLegs, sound, eatingHabit);
                 animals.add(newAnimal);
                 System.out.println(newAnimal);
-                boolean addMore = addMore();
+                addMore();
+               /* boolean addMore = addMore();
                 if(addMore){
                     s.next();
                     //YesOrNoInput
                     //  String naming = stringInput("what is the name ..");
                 }
-                break;
+                break;*/
 
             } catch (InputMismatchException imme) {
             }
         }
 
-        return null;
+
     }
 
 
@@ -45,7 +48,8 @@ public class UserInput {
         System.out.println(s);
     }
 
-    public boolean addMore() {
+    public static boolean addMore() {
+        Scanner s = new Scanner (System.in);
         boolean input = true;
         System.out.println("Add more?");
         String y = "yes";
@@ -55,5 +59,6 @@ public class UserInput {
         }
         return false;
     }
+
 }
 
